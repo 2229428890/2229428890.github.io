@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>猜数游戏</title>
+    <script type="text/javascript">
+	var num1 = Math.floor(Math.random()*20) ;
+        var num2 = Math.floor(Math.random()*20) ;
+        var i=1;
+        const NUM = 5 ;
+        while(i <= NUM) {
+            var guess = prompt(num1 + "+" + num2 + "请输出你的结果");
+            guess = parseInt(guess);
+            if ((num1 + num2) === guess) {
+                alert("对了 !" + "\n你的成功率：" + Math.floor(1 / i * 100) + "%");
+                break;
+            } else {
+                alert("错了 !" + '还有' + (NUM - i) + '次机会');
+            }
+            i++;
+        }
+            </script>
+        </head>
+<body>
+
+</body>
+</html>
