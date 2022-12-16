@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width:100px;
+            height:100px;
+            border:2px solid;
+            border-radius: 50%;
+            display:inline-block;
+            margin:10px;
+            background-color: rgba(143, 211, 199, 0.5);
+            text-align: center;
+            font-size: 40px;
+            position:absolute;
+            transition: all 1s;
+        }
+        p{
+            padding-left:5px;
+            padding-top:5px;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    let ballDiv = [];
+    let height = screen.height;
+    let width = screen.width;
+    let textCon = [...'20203000潘文豪，牧童骑黄牛，歌声振林樾。意欲捕鸣蝉，忽然闭口立。'];
+    const textCons = ['20203000潘文豪，牧童骑黄牛，歌声振林樾。意欲捕鸣蝉，忽然闭口立。',
+        '城阙辅三秦，风烟望五津。与君离别意，同是宦游人。海内存知己，天涯若比邻。无为在岐路，儿女‘共沾巾。',
+        '花间一壶酒，独酌无相亲。举杯邀明月，对影成三人。月既不解饮，影徒随我身。暂伴月将影，行乐须及春。我歌月徘徊，我舞影零乱。醒时同交欢，醉后各分散。永结无情游，相期邈云汉。'];
+    //数组变量
+    let count = 0;
+
+    ballArr();
+    //创建节点数组
+    function ballArr(){
+        for(let i= 0; i<textCon.length; i++){
+            ballDiv[i] = createBall(textCon[i]);
+        }
+    }
+
+    //移除所有 div
+    function removeArr(){
+        let bodyParent = document.querySelector("body");
+        let child = bodyParent.lastElementChild;
+        while(child){
+            bodyParent.removeChild(child);
+            child = bodyParent.lastElementChild;
+        }
+    }
+
+
+    //鼠标移动
+    document.onmousemove =  function(){
+        let width = 0;
+        let height = 0;
+        for(let i = 0; i < ballDiv.length ; i++){
+            if(i % 6 == 0){
+                height += 110;
+                width = 0;
+            }
+            width += 110;
+            ballDiv[i].style.left = width+'px';
+            ballDiv[i].style.top = height+'px';
+        }
+    }
+
+    //鼠标点击，随机移动div
+    document.body.onclick =	function(){
+        for (let i=0; i < ballDiv.length; i++) {
+            const w = Math.floor(Math.random() * width);
+            const h = Math.floor(Math.random() * height);
+
+            ballDiv[i].style.left = w + 'px';
+            ballDiv[i].style.top = h + 'px';
+        }
+    }
+    //转换数组
+    document.body.ondblclick = function(){
+        //删除所有节点
+        removeArr();
+        count++;
+
+        if(count>2){
+            count = 0;
+        }
+        //更换数组
+        textCon = [...textCons[count]];
+        ballArr();
+    }
+
+    //创建 div 节点
+    function createBall(text){
+        //创建p节点
+        const pDom = document.createElement('p');
+        //创建文本节点
+        const textNode = document.createTextNode(text);
+        //将文本节点添加到p节点 ?
+        pDom.appendChild(textNode);
+        //创建div节点
+        divDom = document.createElement('div');
+        //将p节点添加到div ?
+        divDom.appendChild(pDom);
+        //将div对象加入到body中
+        document.body.appendChild(divDom) ;
+
+        return divDom;
+    }
+
+</script>
+</body>
+</html>

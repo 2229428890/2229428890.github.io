@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width:150px;
+            height:120px;
+            padding:0.5em;
+            border:2px solid ;
+            border-radius: 50%;
+            display:inline-block;
+            margin:20px;
+            background-color: rgba(143, 211, 199, 0.5);
+            text-align: center;
+            font-size: 23px;
+            position:absolute;
+            transition: all 5s;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let s = '牧童骑黄牛，歌声振林樾。意欲捕鸣蝉，忽然闭口立。';
+    for(let i=0;i<100;i++){
+        let divDom = document.createElement('div');
+        divDom.textContent = s ;
+        divDom.onmouseover = function () {
+            let x = Math.floor(Math.random() * window.innerWidth);
+            let y = Math.floor(Math.random() * window.innerHeight);
+            this.style.left = x + 'px';
+            this.style.top = y + 'px';
+        };
+        randPositionDiv(divDom);
+        document.body.appendChild(divDom);
+    }
+    function randPositionDiv(dom){
+        let x = Math.floor(Math.random()*window.innerWidth);
+        let y = Math.floor(Math.random()*window.innerHeight);
+        dom.style.left = x+'px';
+        dom.style.top = y+'px';
+    }
+</script>
+</body>
+</html>

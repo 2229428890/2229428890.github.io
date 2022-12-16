@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        div{
+            width:150px;
+            height:120px;
+            padding:0.5em;
+            border:2px solid ;
+            display:inline-block;
+            margin:20px;
+            background-color: rgba(255, 0, 0, 0.5);
+            text-align: center;
+            font-size: 23px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let s = '绝代有佳人，幽居在空谷。自云良家子，零落依草木。';
+    let i = 0;
+    let divDom;
+    for(i ; i<100 ; i++){
+        divDom = document.createElement('div');
+        document.body.appendChild(divDom);
+        divDom.innerText = s ;
+    }
+</script>
+</body>
+</html>
